@@ -1,6 +1,7 @@
 var http = require('http');
 var fs   = require('fs');
 
+
 var beatles=[{
   name: "John Lennon",
   birthdate: "09/10/1940",
@@ -22,3 +23,35 @@ var beatles=[{
   profilePic:"http://cp91279.biography.com/BIO_Bio-Shorts_0_Ringo-Starr_SF_HD_768x432-16x9.jpg"
 }
 ]
+
+  http.createServer((req, res) => {
+    if (req.url === '/api') {
+      res.writeHead(200, {'Content-Type' : 'application/json'});
+      return  res.end(JSON.stringify(beatles));
+    }
+
+    if (req.url.substr(0,5) === '/api/') {
+      const beatle = req.url.split('/').pop()
+      const found =beatles.find(b => encodeURI(b.name).toLowerCase() === beatle.toLowerCase());
+      if (found) {
+        res.writeHead(200, {'Content-Type' : 'application/json'});
+        return res.end(JSON.stringify(found))
+      }
+      res.writeHead(404, {'Content-Type' : 'text/plain'});
+      return res.end(`${beatle} no es un Beatle!!!...`)
+    }
+  
+  }).listen(1337, '127.0.0.1', ()=> console.log('Escuchando puerto 1337...'))
+
+
+ 
+
+
+
+
+
+
+
+
+
+
