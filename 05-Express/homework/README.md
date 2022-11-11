@@ -2,6 +2,7 @@
 
 ## Descripción
 
+
 En esta homework vamos a desarrollar una API que nos permitirá gestionar Posts (entendiendo como tal a una publicación similar a las que hacemos en las redes sociales) y realizar las siguientes acciones:
 
 * Consultar Posts existentes
