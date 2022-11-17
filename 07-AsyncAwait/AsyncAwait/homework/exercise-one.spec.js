@@ -3,7 +3,8 @@
 var path = require('path');
 var chai = require('chai');
 var expect = chai.expect;
-chai.use(require('chai-spies'));
+chai.use(require('chai-spies'))
+
 
 var utils = require('./utils');
 var blue = chai.spy.on(utils, 'blue');
